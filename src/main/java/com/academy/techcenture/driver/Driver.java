@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class Driver {
     private Driver(){}
     protected static WebDriver driver;
-    public static WebDriver getDriver(){
+    public static   WebDriver getDriver(){
         if (driver == null) {
             String browser = ConfigReader.getProperty("browser");
 

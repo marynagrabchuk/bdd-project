@@ -13,7 +13,7 @@ public class BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public void navigate_to_home_page(){
+    public  void navigate_to_home_page(){
         driver.get(ConfigReader.getProperty("url"));
     }
 

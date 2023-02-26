@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/java/com/academy/techcenture/features/login.feature"},
-        glue = {"com/academy/techcenture/stepDefinitions","Hooks"}
+        features = {"src/test/java/com/academy/techcenture/features"},
+        glue = {"com/academy/techcenture/stepDefinitions"}
         // tags = {"@regression"}
 )
 

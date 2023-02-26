@@ -33,6 +33,12 @@ public class LoginPage extends BasePage{
     private WebElement logInBtn;
     @FindBy(xpath = "//p[contains(text(),'incorrect!')]")
     private WebElement incorrectLogInText;
+    @FindBy(xpath = "//a[text()=' Logout']")
+    private WebElement logoutBtn;
+
+    @FindBy(xpath = "//p[text()='Email Address already exist!']")
+    private WebElement emailAddressAlreadyExistErrorText;
+
     public void verifyNewUserSignupIsVisible(){
         Assert.assertTrue("The message new user sing up is not displayed",newUserSignup.isDisplayed());
 
@@ -78,4 +84,15 @@ public class LoginPage extends BasePage{
     public void verifyIncorrectLogInTextIsVisible(){
         Assert.assertTrue("Incorrect log in text is not visible", incorrectLogInText.isDisplayed());
     }
+    public void logOutUser(){
+        logoutBtn.click();
+    }
+    public void enterExistEmailInLogInField(){
+        emailInput.sendKeys(ConfigReader.getProperty("email1"));
+        nameInput.sendKeys(ConfigReader.getProperty("name"));
+    }
+    public void verifyErrorEmailAddressAlreadyExist(){
+        Assert.assertTrue("Email Address already exist! is not display",emailAddressAlreadyExistErrorText.isDisplayed());
+    }
+
 }
