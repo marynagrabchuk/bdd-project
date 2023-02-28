@@ -2,6 +2,7 @@ package com.academy.techcenture.pages;
 
 import com.academy.techcenture.config.ConfigReader;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +21,8 @@ public class HomePage extends BasePage{
     private WebElement dismissBtn;
     @FindBy(xpath = "//iframe[@title='Advertisement']")
     private WebElement iframe;
+    @FindBy(xpath = "//iframe[@id='aswift_9']")
+    private WebElement parentIframe;
     @FindBy(xpath = "//a[text()=' Logged in as ']")
     private WebElement loginAsUserText;
     @FindBy(xpath = "//a[text()=' Contact us']")
@@ -46,5 +49,13 @@ public class HomePage extends BasePage{
     }
     public void clickOnProductBtn(){
         productsBtn.click();
+    }
+    public void closeAd() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.switchTo().frame(parentIframe);
+        driver.switchTo().frame(iframe);
+        driver.findElement(By.xpath("//div[@id='dismiss-button']/div/span")).click();
+        driver.switchTo().defaultContent();
+        Thread.sleep(3000);
     }
 }

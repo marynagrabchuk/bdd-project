@@ -21,8 +21,9 @@ public class AllProductsStepDef {
         homePage.verifyUserIsOnAHomePage();
     }
     @When("user Clicks on Products button")
-    public void user_clicks_on_products_button() {
+    public void user_clicks_on_products_button() throws InterruptedException {
         homePage.clickOnProductBtn();
+        homePage.closeAd();
     }
     @Then("Verify user is navigated to ALL PRODUCTS page successfully")
     public void verify_user_is_navigated_to_all_products_page_successfully() {

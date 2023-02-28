@@ -1,6 +1,7 @@
 package com.academy.techcenture.pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,7 @@ public class ProductPage extends BasePage{
     }
     @FindBy(xpath = "//div[@class='features_items']")
     private WebElement allProducts;
-    @FindBy(xpath = "(//div[@class='features_items']/div/following-sibling::div)[1]/div/div/following-sibling::div/ul/li/a")
+    @FindBy(xpath = "(//div[@class='features_items']/div/following-sibling::div)[1]/div/div/following-sibling::div/ul/li/a/i")
     private WebElement firstProduct;
 
     public void verifyUserOnAProductPage(){
@@ -23,6 +24,8 @@ public class ProductPage extends BasePage{
         Assert.assertTrue("Products Are not visible",allProducts.isDisplayed());
     }
     public void clickOnFirstProduct(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,550)", "");
         firstProduct.click();
     }
 }
