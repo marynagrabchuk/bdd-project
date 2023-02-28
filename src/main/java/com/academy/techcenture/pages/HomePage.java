@@ -3,6 +3,7 @@ package com.academy.techcenture.pages;
 import com.academy.techcenture.config.ConfigReader;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,6 +32,12 @@ public class HomePage extends BasePage{
     private WebElement testCasesBtn;
     @FindBy(xpath = "//a[text()=' Products']")
     private WebElement productsBtn;
+    @FindBy(xpath = "//h2[text()='Subscription']")
+    private WebElement subscriptionText;
+    @FindBy(id = "susbscribe_email")
+    private WebElement subscriptionEmailInput;
+    @FindBy(id = "subscribe")
+    private WebElement subscribeBtn;
 
     public void clickOnSingInSignUpBtn(){
         singInSignUpButton.click();
@@ -57,5 +64,17 @@ public class HomePage extends BasePage{
         driver.findElement(By.xpath("//div[@id='dismiss-button']/div/span")).click();
         driver.switchTo().defaultContent();
         Thread.sleep(5000);
+    }
+    public void scrollDownToFooter(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
+    }
+    public void verifySubscriptionTextVisible(){
+        Assert.assertTrue("Subscription text is not visible",subscriptionText.isDisplayed());
+    }
+    public void enterEmailToSubscribe(String str) throws InterruptedException {
+        subscriptionEmailInput.sendKeys(str);
+        Thread.sleep(3000);
+        subscribeBtn.click();
     }
 }
