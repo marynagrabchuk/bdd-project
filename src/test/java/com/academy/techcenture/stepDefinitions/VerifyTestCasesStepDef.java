@@ -18,9 +18,9 @@ public class VerifyTestCasesStepDef {
         homePage.navigate_to_home_page();
     }
     @Then("user Click on  Test Cases button")
-    public void user_click_on_test_cases_button() {
+    public void user_click_on_test_cases_button() throws InterruptedException {
         homePage.clickTestCasesBtn();
-//        homePage.closeAd();
+        homePage.closeAd();
     }
     @Then("User verify is navigate to test cases page successfully")
     public void user_verify_is_navigate_to_test_cases_page_successfully() {
