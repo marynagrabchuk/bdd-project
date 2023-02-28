@@ -1,5 +1,5 @@
 Feature: Verify All Products and product detail page
-  Scenario:
+  Scenario: Verify All Products and product detail page
     Given user is on the HomePage
     When user Clicks on Products button
     Then Verify user is navigated to ALL PRODUCTS page successfully

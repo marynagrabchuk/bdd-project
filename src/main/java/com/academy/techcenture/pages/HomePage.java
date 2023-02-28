@@ -38,6 +38,8 @@ public class HomePage extends BasePage{
     private WebElement subscriptionEmailInput;
     @FindBy(id = "subscribe")
     private WebElement subscribeBtn;
+    @FindBy(xpath = "//a[text()=' Cart']")
+    private WebElement cartBtn;
 
     public void clickOnSingInSignUpBtn(){
         singInSignUpButton.click();
@@ -76,5 +78,8 @@ public class HomePage extends BasePage{
         subscriptionEmailInput.sendKeys(str);
         Thread.sleep(3000);
         subscribeBtn.click();
+    }
+    public void clickOnCartBtn(){
+        cartBtn.click();
     }
 }

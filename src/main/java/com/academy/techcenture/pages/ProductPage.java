@@ -1,7 +1,9 @@
 package com.academy.techcenture.pages;
 
+import com.academy.techcenture.config.ConfigReader;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -22,6 +24,22 @@ public class ProductPage extends BasePage{
     private WebElement submitSearchBtn;
     @FindBy(xpath = "//p[contains(text(),'Top')]")
     private List<WebElement> searchedProducts;
+    @FindBy(xpath = "(//div[@class='features_items']/div)[1]")
+    private WebElement firstItem;
+    @FindBy(xpath = "//a[@data-product-id='1' and text()='Add to cart']/i")
+    private WebElement addToCartBtn;
+    @FindBy(xpath = "//a[@data-product-id='2' and text()='Add to cart']/i")
+    private WebElement addToCarSecondItemBtn;
+    @FindBy(xpath = "//button[text()='Continue Shopping']")
+    private WebElement continueShoppingBtn;
+    @FindBy(xpath = "//a/u[text()='View Cart']")
+    private WebElement viewCartBtn;
+    @FindBy(xpath = "//a[@data-product-id='1']/../h2")
+    private WebElement firstItemPrice;
+    @FindBy(xpath = "//a[@data-product-id='2']/../h2")
+    private WebElement secondItemPrice;
+
+
 
     public void verifyUserOnAProductPage(){
         Assert.assertTrue("User is not on a product page",driver.getTitle().trim().equalsIgnoreCase("Automation Exercise - All Products"));
@@ -45,5 +63,29 @@ public class ProductPage extends BasePage{
 
         }
     }
+    public void hoverOverFistItem(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(firstItem);
+    }
+    public void addFirstItemToTeCart(){
+        addToCartBtn.click();
+    }
+    public void addSecondItemToTeCart(){
+        addToCarSecondItemBtn.click();
+    }
+    public void clickContinueShoppingBtn(){
+        continueShoppingBtn.click();
+    }
+    public void clickViewCart(){
+        viewCartBtn.click();
+    }
+    public void savePriceData(){
+        String price1 = firstItemPrice.getText().trim();
+        ConfigReader.setProperty("price1",price1);
+        String price2 = secondItemPrice.getText().trim();
+        ConfigReader.setProperty("price2", price2);
+
+    }
+
 
 }
