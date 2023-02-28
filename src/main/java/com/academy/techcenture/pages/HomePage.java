@@ -22,11 +22,24 @@ public class HomePage extends BasePage{
     private WebElement iframe;
     @FindBy(xpath = "//a[text()=' Logged in as ']")
     private WebElement loginAsUserText;
+    @FindBy(xpath = "//a[text()=' Contact us']")
+    private WebElement contactUsBtn;
+    @FindBy(xpath = " //a[text()=' Test Cases']")
+    private WebElement testCasesBtn;
 
     public void clickOnSingInSignUpBtn(){
         singInSignUpButton.click();
     }
     public void verifyLogInAsUser(){
         Assert.assertTrue("Log in as user not visible",loginAsUserText.getText().trim().equalsIgnoreCase("Logged in as "+ ConfigReader.getProperty("name")));
+    }
+    public void verifyUserIsOnAHomePage(){
+        Assert.assertTrue(driver.getTitle().trim().equalsIgnoreCase("Automation Exercise"));
+    }
+    public void clickOnContactUsBtn(){
+        contactUsBtn.click();
+    }
+    public void clickTestCasesBtn(){
+        testCasesBtn.click();
     }
 }

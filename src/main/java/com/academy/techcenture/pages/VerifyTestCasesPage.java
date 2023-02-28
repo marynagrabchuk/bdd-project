@@ -15,7 +15,14 @@ public class VerifyTestCasesPage extends BasePage{
     @FindBy(xpath = "//b[contains(text(),'Test Cases')]")
     private WebElement testCasesText;
 
+
     public void verifyUserIsOnTestCasesPage(){
         Assert.assertTrue("user is not in test cases page",testCasesText.isDisplayed());
     }
+
+
+
+
+
+
 }
