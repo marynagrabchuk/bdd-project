@@ -26,6 +26,8 @@ public class HomePage extends BasePage{
     private WebElement contactUsBtn;
     @FindBy(xpath = " //a[text()=' Test Cases']")
     private WebElement testCasesBtn;
+    @FindBy(xpath = "//a[text()=' Products']")
+    private WebElement productsBtn;
 
     public void clickOnSingInSignUpBtn(){
         singInSignUpButton.click();
@@ -41,5 +43,8 @@ public class HomePage extends BasePage{
     }
     public void clickTestCasesBtn(){
         testCasesBtn.click();
+    }
+    public void clickOnProductBtn(){
+        productsBtn.click();
     }
 }
