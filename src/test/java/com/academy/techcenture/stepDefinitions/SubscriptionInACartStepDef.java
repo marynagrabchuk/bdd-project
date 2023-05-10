@@ -36,7 +36,7 @@ public class SubscriptionInACartStepDef {
     /**
      * Finish this method . Can Not catch success message.
      */
-    @Then("Verify success message (You have been successfully subscribed!) is visible")
+    @Then("Verify success message \\(You have been successfully subscribed!) is visible")
     public void verify_success_message_you_have_been_successfully_subscribed_is_visible() {
 
     }

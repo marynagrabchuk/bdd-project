@@ -1,5 +1,5 @@
 Feature: Verify All Products and product detail page
-  Scenario:
+  Scenario:  Verify All Products and product detail page
     Given user on a Home Page and home page is visible
     When  Click Products button
     And user Hover over first product and click (Add to cart)

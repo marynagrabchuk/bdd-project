@@ -21,6 +21,12 @@ public class ProductDetailPage extends BasePage{
     private WebElement productPrice;
     @FindBy(xpath = "//div[@class='product-information']/p")
     private List<WebElement> productDetails;
+    @FindBy(id = "quantity")
+    private WebElement quantityInput;
+    @FindBy(xpath = "//button[contains(.,'Add to')]")
+    private WebElement addToCartBtn;
+    @FindBy(xpath = "//a[.='View Cart']")
+    private WebElement viewCartBtn;
     public void verifyUserIsOnProductDetailsPage(){
         Assert.assertTrue("User is not on a product details page",driver.getTitle().trim().equalsIgnoreCase("Automation Exercise - Product Details"));
     }
@@ -44,5 +50,15 @@ public class ProductDetailPage extends BasePage{
             Assert.assertTrue("Product , condition, brand availability, is not visible",productDetails.get(i).isDisplayed());
         }
 
+    }
+    public void enterQuantity(String str){
+        quantityInput.clear();
+        quantityInput.sendKeys(str);
+    }
+    public void clickAddToCart(){
+        addToCartBtn.click();
+    }
+    public void clickOnViewCart(){
+        viewCartBtn.click();
     }
 }

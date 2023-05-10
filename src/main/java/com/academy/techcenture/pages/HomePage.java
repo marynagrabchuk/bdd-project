@@ -22,7 +22,13 @@ public class HomePage extends BasePage{
     private WebElement dismissBtn;
     @FindBy(xpath = "//iframe[@title='Advertisement']")
     private WebElement iframe;
-    @FindBy(xpath = "//iframe[@id='aswift_9']")
+//    @FindBy(xpath = "//iframe[@id='aswift_9']")
+//    private WebElement parentIframe;
+//    @FindBy(xpath = "//iframe[contains(@id,'aswift']")
+//    private WebElement parentIframe;
+//    @FindBy(xpath = "//iframe[@data-google-query-id='CKz9y5aLyf0CFYpZwQod9TALAw']")
+//    private WebElement parentIframe;
+    @FindBy(xpath = "//iframe[@data-google-container-id='a!6']")
     private WebElement parentIframe;
     @FindBy(xpath = "//a[text()=' Logged in as ']")
     private WebElement loginAsUserText;
@@ -40,6 +46,35 @@ public class HomePage extends BasePage{
     private WebElement subscribeBtn;
     @FindBy(xpath = "//a[text()=' Cart']")
     private WebElement cartBtn;
+    @FindBy(xpath = "(//a[text()='View Product'])[1]/i")
+    private WebElement viewFirstProductBtn;
+    @FindBy(xpath = "(//a[text()='Add to cart'])[1]")
+    private WebElement addToCartBtn;
+    @FindBy(xpath = "//button[text()='Continue Shopping']")
+    private WebElement continueBtn;
+    @FindBy(xpath = "//div[@id='accordian']")
+    private WebElement categoriesBox;
+    @FindBy(xpath = "//a[contains(.,'Women')]")
+    private WebElement womenCategoryBtn;
+    @FindBy(xpath = "//div[@id='Women']//div//ul//li//a[contains(.,'Dress')]")
+    private WebElement dressBtnUnderWomen;
+    @FindBy(xpath = "//h2[text()='Women - Dress Products']")
+    private WebElement womanCategoryDisplayText;
+    @FindBy(xpath = "//a[contains(.,'Men')]")
+    private WebElement menCategoryBtn;
+    @FindBy(xpath = "//div[@id='Men']//div//ul//li//a[contains(.,'Jeans ')]")
+    private WebElement jeansBtnUnderMen;
+    @FindBy(xpath = "//h2[text()='Men - Jeans Products']")
+    private WebElement menCategoryDisplayText;
+    @FindBy(xpath = "//div[@class='brands_products']")
+    private WebElement brands;
+    @FindBy(xpath = "//a[text()='Polo']")
+    private WebElement poloBrandBtn;
+    @FindBy(xpath = "//a[text()='Biba']")
+    private WebElement bibaBrandBtn;
+
+
+
 
     public void clickOnSingInSignUpBtn(){
         singInSignUpButton.click();
@@ -82,4 +117,54 @@ public class HomePage extends BasePage{
     public void clickOnCartBtn(){
         cartBtn.click();
     }
+    public void clickOnViewProduct(){
+        viewFirstProductBtn.click();
+    }
+    public void addToCart(){
+        addToCartBtn.click();
+    }
+    public void clickContinueShoppingBtn(){
+        continueBtn.click();
+    }
+    public void scrollUpToHeader(){
+        WebElement element = driver.findElement(By.tagName("header"));
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+    public void scrollDown(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,550)", "");
+    }
+    public void verifyVisibilityOfCategoryMenu(){
+        Assert.assertTrue("Category Box is not visible",categoriesBox.isDisplayed());
+    }
+    public void clickOnWomenCategory(){
+        womenCategoryBtn.click();
+    }
+    public void clickOnDressUnderWomen(){
+        dressBtnUnderWomen.click();
+    }
+    public void verifyWomenCategoryIsDisplay(){
+        Assert.assertTrue("Woman category is not display",womanCategoryDisplayText.isDisplayed());
+    }
+    public void clickOnMenCategory() {
+        menCategoryBtn.click();
+    }
+        public void clickOnJeanUnderMenCategory(){
+        jeansBtnUnderMen.click();
+    }
+    public void verifyMenCategoryIsDisplay(){
+        Assert.assertTrue("Men category is not display",menCategoryDisplayText.isDisplayed());
+    }
+    public void verifyBrandsAreVisible(){
+        Assert.assertTrue("Brand is not displayed", brands.isDisplayed());
+    }
+    public void clickOnPoloBrand(){
+        poloBrandBtn.click();
+    }
+    public void clickOnBibaBrand(){
+        bibaBrandBtn.click();
+    }
+
+
 }

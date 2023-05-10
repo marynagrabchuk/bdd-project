@@ -38,6 +38,10 @@ public class ProductPage extends BasePage{
     private WebElement firstItemPrice;
     @FindBy(xpath = "//a[@data-product-id='2']/../h2")
     private WebElement secondItemPrice;
+    @FindBy(xpath = "//h2[text()='Searched Products']")
+    private WebElement searchProductsText;
+    @FindBy(xpath = "//p[contains(text(),'Dress')]")
+    private List<WebElement> productsDresses;
 
 
 
@@ -86,6 +90,32 @@ public class ProductPage extends BasePage{
         ConfigReader.setProperty("price2", price2);
 
     }
+    public void verifySearchProductsTextIsVisible(){
+        Assert.assertTrue("Searched products text is not visible",searchProductsText.isDisplayed());
+    }
+    public void verifySearchProductsIsVisibleAndRelatedToSearch(String str) throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> searchedProducts = driver.findElements(By.xpath("//p[contains(text(),'"+ str +"')]"));
+        for (int i = 0; i < searchedProducts.size(); i++) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,350)", "");
+            Assert.assertTrue("Product  is not displayed",searchedProducts.get(i).isDisplayed());
+            js.executeScript("window.scrollBy(0,200)", "");
+            i++;
+        }
+    }
+    public void addSearchedProductsToCart() throws InterruptedException {
+        List<WebElement> addToCartProducts = driver.findElements(By.xpath("//a[text()='Add to cart']"));
+        for (int i = 0; i < addToCartProducts.size(); i++) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,150)", "");
+            addToCartProducts.get(i).click();
+            clickContinueShoppingBtn();
+            js.executeScript("window.scrollBy(0,200)", "");
+            Thread.sleep(1000);
+            i++;
+        }
+        ConfigReader.setProperty("productSize",String.valueOf(addToCartProducts.size()));
 
-
+    }
 }
